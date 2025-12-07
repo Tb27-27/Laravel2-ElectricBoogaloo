@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+// removed:
+// use Illuminate\Support\Facades\DB;
+use App\Models\Planet;
 
 class PlanetController extends Controller
 {
     // alle planeten
     public function index()
     {
-        $planets = DB::table('planets')->get();
+        // verwijdert: $planets = DB::table('planets')->get();
+       
+        
+        // toegevoegd
+        $planets = Planet::all();
         
         // geef de planeten mee
         return view('planets.index', ['planets' => $planets]);
@@ -19,12 +25,15 @@ class PlanetController extends Controller
     // pak het id dat in word meegegeven en laat alleen eentje tonen
     public function show($id) 
     {
-        $planet = DB::table('planets')->where('id', $id)->first();
+        // removed: 
+        // $planet = DB::table('planets')->where('id', $id)->first();
+        // if (!$planet) {
+        //     abort(404);
+        // }
 
-        // als de planeet niet bestaat gooi een error
-        if (!$planet) {
-            abort(404);
-        }
+
+        // toegevoegd: findOrFail. 
+        $planet = Planet::findOrFail($id);
 
         return view('planets.show', ['planet' => $planet]);
     }
