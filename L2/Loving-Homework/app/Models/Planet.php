@@ -9,9 +9,9 @@ class Planet extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name', 
-        'description', 
-        'size_in_km'
-    ];
+    // Een Planet behoort toe aan een SolarSystem
+    public function solarSystem()
+    {
+        return $this->belongsTo(SolarSystem::class);
+    }    
 }

@@ -12,26 +12,17 @@ class PlanetController extends Controller
     // alle planeten
     public function index()
     {
-        // verwijdert: $planets = DB::table('planets')->get();
-       
+        // $planets = Planet::all();
         
-        // toegevoegd
-        $planets = Planet::all();
+        // pak planeten op en laad direct het gekoppelde zonnestelsel in
+        $planets = Planet::with('solarSystem')->get();
         
-        // geef de planeten mee
         return view('planets.index', ['planets' => $planets]);
     }
 
     // pak het id dat in word meegegeven en laat alleen eentje tonen
     public function show($id) 
     {
-        // removed: 
-        // $planet = DB::table('planets')->where('id', $id)->first();
-        // if (!$planet) {
-        //     abort(404);
-        // }
-
-
         // toegevoegd: findOrFail. 
         $planet = Planet::findOrFail($id);
 

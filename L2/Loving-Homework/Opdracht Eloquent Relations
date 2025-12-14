@@ -1,0 +1,13 @@
+php artisan make:migration create_solar_systems_table
+
+   INFO  Migration [C:\Users\tombb\Desktop\code_box\Laravel\Laravel2-ElectricBoogaloo\L2\Loving-Homework\database\migrations\2025_12_14_174432_create_solar_systems_table.php] created successfully.
+
+
+php artisan make:migration add_solar_system_id_to_planets_table --table=planets
+
+   INFO  Migration [C:\Users\tombb\Desktop\code_box\Laravel\Laravel2-ElectricBoogaloo\L2\Loving-Homework\database\migrations\2025_12_14_174623_add_solar_system_id_to_planets_table.php] created successfully.
+
+
+php artisan make:model SolarSystem
+
+   INFO  Model [C:\Users\tombb\Desktop\code_box\Laravel\Laravel2-ElectricBoogaloo\L2\Loving-Homework\app\Models\SolarSystem.php] created successfully.

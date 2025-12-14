@@ -6,13 +6,19 @@
 <body>
     <h1>Alle Planeten</h1>
     <ul>
-        <!-- Voor alle planeten laat een planeet zien en geef het de link mee voor de pagina -->
         @foreach ($planets as $planet)
             <li>
                 <a href="/planets/{{ $planet->id }}">
                     {{ $planet->name }}
                 </a>
-                <small>({{ $planet->description }})</small>
+                <p>({{ $planet->description }})</p>
+                
+                <br>
+                <span>
+                    Zonnestelsel:
+                        <!-- pak de solar system of gooi onbekend terug -->
+                    {{ $planet->solarSystem->name ?? 'Onbekend' }}
+                </span>
             </li>
         @endforeach
     </ul>
